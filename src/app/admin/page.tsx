@@ -347,18 +347,18 @@ function AdminDashboard() {
 
 // ── 상품 참조 데이터 (admin 페이지 전용 — 서버 import 없이 인라인) ──
 const PRODUCT_ROWS = [
-  { id: 'ck-001', name: '논산 딸기 잼 만들기 키트',   category: '요리 키트',   cloudinaryId: 'nonsan/kit-strawberry-jam' },
-  { id: 'ck-002', name: '논산 채소 비빔밥 키트',      category: '요리 키트',   cloudinaryId: 'nonsan/kit-bibimbap' },
-  { id: 'ck-003', name: '논산 딸기 청 담그기 키트',   category: '요리 키트',   cloudinaryId: 'nonsan/kit-strawberry-syrup' },
-  { id: 'ds-001', name: '논산 딸기 케이크 키트',      category: '디저트 키트', cloudinaryId: 'nonsan/kit-strawberry-cake' },
-  { id: 'ds-002', name: '논산 딸기 쿠키 키트',        category: '디저트 키트', cloudinaryId: 'nonsan/kit-strawberry-cookie' },
-  { id: 'ds-003', name: '논산 딸기 아이스크림 키트',  category: '디저트 키트', cloudinaryId: 'nonsan/kit-strawberry-icecream' },
-  { id: 'dr-001', name: '논산 딸기 라떼 키트',        category: '음료 키트',   cloudinaryId: 'nonsan/kit-strawberry-latte' },
-  { id: 'dr-002', name: '논산 연꽃 차 키트',          category: '음료 키트',   cloudinaryId: 'nonsan/kit-lotus-tea' },
-  { id: 'dr-003', name: '논산 딸기 에이드 키트',      category: '음료 키트',   cloudinaryId: 'nonsan/kit-strawberry-ade' },
-  { id: 'gf-001', name: '논산 딸기 프리미엄 선물 키트', category: '선물 세트',  cloudinaryId: 'nonsan/kit-gift-premium' },
-  { id: 'gf-002', name: '논산 패밀리 쿠킹 키트',      category: '선물 세트',   cloudinaryId: 'nonsan/kit-gift-family' },
-  { id: 'gf-003', name: '논산 딸기 체험 ALL-IN 키트', category: '선물 세트',   cloudinaryId: 'nonsan/kit-gift-allin' },
+  { id: 'ck-001', name: '못난이 딸기 잼 1인 키트',        category: '요리 키트',   cloudinaryId: 'nonsan/ugly-strawberry-jam-kit' },
+  { id: 'ck-002', name: '못난이 채소 비빔밥 1인 키트',    category: '요리 키트',   cloudinaryId: 'nonsan/ugly-veggie-bibimbap-kit' },
+  { id: 'ck-003', name: '못난이 감자 크림수프 1인 키트',  category: '요리 키트',   cloudinaryId: 'nonsan/ugly-potato-soup-kit' },
+  { id: 'ds-001', name: '못난이 딸기 스무디볼 1인 키트',  category: '디저트 키트', cloudinaryId: 'nonsan/ugly-strawberry-smoothiebowl-kit' },
+  { id: 'ds-002', name: '못난이 바나나 팬케이크 1인 키트',category: '디저트 키트', cloudinaryId: 'nonsan/ugly-banana-pancake-kit' },
+  { id: 'ds-003', name: '못난이 사과 시나몬 크럼블 1인 키트',category: '디저트 키트',cloudinaryId: 'nonsan/ugly-apple-crumble-kit' },
+  { id: 'dr-001', name: '못난이 딸기 생과일주스 1인 키트',category: '음료 키트',   cloudinaryId: 'nonsan/ugly-strawberry-juice-kit' },
+  { id: 'dr-002', name: '못난이 당근·사과 착즙 1인 키트', category: '음료 키트',   cloudinaryId: 'nonsan/ugly-carrot-apple-juice-kit' },
+  { id: 'dr-003', name: '못난이 채소 해독 스무디 1인 키트',category: '음료 키트',   cloudinaryId: 'nonsan/ugly-green-smoothie-kit' },
+  { id: 'gf-001', name: '못난이 1주일 밀키트 세트',       category: '선물 세트',   cloudinaryId: 'nonsan/ugly-weekly-mealkit' },
+  { id: 'gf-002', name: '못난이 비건 1인 선물 세트',      category: '선물 세트',   cloudinaryId: 'nonsan/ugly-vegan-gift-set' },
+  { id: 'gf-003', name: '대학생 1인분 응원 세트',         category: '선물 세트',   cloudinaryId: 'nonsan/ugly-cheer-gift-set' },
 ]
 
 // ── 메인 페이지 — 인증 분기 ─────────────────────────────
