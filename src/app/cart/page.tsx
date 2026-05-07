@@ -18,80 +18,69 @@ export default function CartPage() {
     <div className="min-h-screen bg-[var(--bg)]">
       <SiteHeader />
 
-      <main className="max-w-3xl mx-auto px-4 sm:px-6 py-10">
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-8">
-          장바구니
+      <main className="max-w-2xl mx-auto px-6 sm:px-8 py-12">
+        <div className="flex items-baseline gap-3 mb-10">
+          <h1 className="text-2xl font-black text-[var(--fg)]">장바구니</h1>
           {items.length > 0 && (
-            <span className="ml-2 text-base font-normal text-gray-400">
-              ({items.length}종)
-            </span>
+            <span className="text-sm text-[var(--muted)]">{items.length}종</span>
           )}
-        </h1>
+        </div>
 
-        {/* ── 비어있을 때 ── */}
+        {/* 비어있을 때 */}
         {items.length === 0 && (
-          <div className="py-24 flex flex-col items-center gap-4 text-center">
-            <span className="text-5xl">🛒</span>
-            <p className="text-gray-500 text-sm">장바구니가 비어있습니다.</p>
+          <div className="py-24 text-center">
+            <p className="text-[var(--muted)] text-sm mb-6">장바구니가 비어있습니다.</p>
             <Link
               href="/"
-              className="mt-2 inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl bg-black text-white text-sm font-semibold hover:bg-gray-800 transition-colors"
+              className="inline-flex items-center gap-2 text-xs tracking-widest uppercase text-[var(--muted)] hover:text-[var(--fg)] transition-colors group"
             >
-              쇼핑 계속하기
+              <span className="group-hover:-translate-x-0.5 transition-transform">←</span>
+              키트 둘러보기
             </Link>
           </div>
         )}
 
-        {/* ── 아이템 목록 ── */}
+        {/* 아이템 목록 */}
         {items.length > 0 && (
           <>
-            <ul className="divide-y divide-gray-100 mb-8">
+            <ul className="divide-y divide-[var(--border)] mb-10">
               {items.map((item) => {
                 const lineKey = `${item.productId}::${item.size ?? ''}::${item.color ?? ''}`
                 return (
-                  <li key={lineKey} className="py-5 flex gap-4 items-start">
-                    {/* 상품 정보 */}
+                  <li key={lineKey} className="py-6 flex gap-4 items-start">
                     <div className="flex-1 min-w-0">
-                      <p className="text-sm font-semibold text-gray-900 truncate">
-                        {item.name}
-                      </p>
-                      {(item.size || item.color) && (
-                        <p className="mt-0.5 text-xs text-gray-400">
-                          {[item.size && `사이즈: ${item.size}`, item.color && `색상: ${item.color}`]
-                            .filter(Boolean)
-                            .join(' | ')}
-                        </p>
+                      <p className="text-sm font-medium text-[var(--fg)] truncate">{item.name}</p>
+                      {item.size && (
+                        <p className="mt-1 text-xs text-[var(--muted)]">{item.size}</p>
                       )}
-                      <p className="mt-1 text-sm font-bold text-gray-900">
+                      <p className="mt-2 text-sm font-semibold text-[var(--fg)]">
                         {(item.price * item.quantity).toLocaleString('ko-KR')}원
                       </p>
-                      <p className="text-xs text-gray-400">
-                        {item.price.toLocaleString('ko-KR')}원 × {item.quantity}개
+                      <p className="text-xs text-[var(--muted)]">
+                        {item.price.toLocaleString('ko-KR')}원 × {item.quantity}
                       </p>
                     </div>
 
                     {/* 수량 조절 */}
-                    <div className="flex items-center border border-gray-200 rounded-xl overflow-hidden shrink-0">
+                    <div className="flex items-center border border-[var(--border)] shrink-0">
                       <button
                         onClick={() =>
                           item.quantity <= 1
                             ? removeItem(item.productId, item.size, item.color)
                             : updateQuantity(item.productId, item.quantity - 1, item.size, item.color)
                         }
-                        className="w-9 h-9 flex items-center justify-center text-gray-500 hover:bg-gray-50 transition-colors text-base"
-                        aria-label="수량 감소"
+                        className="w-9 h-9 text-[var(--muted)] hover:text-[var(--fg)] transition-colors text-base"
                       >
                         −
                       </button>
-                      <span className="w-8 text-center text-sm font-semibold text-gray-900">
+                      <span className="w-8 text-center text-sm text-[var(--fg)]">
                         {item.quantity}
                       </span>
                       <button
                         onClick={() =>
                           updateQuantity(item.productId, item.quantity + 1, item.size, item.color)
                         }
-                        className="w-9 h-9 flex items-center justify-center text-gray-500 hover:bg-gray-50 transition-colors text-base"
-                        aria-label="수량 증가"
+                        className="w-9 h-9 text-[var(--muted)] hover:text-[var(--fg)] transition-colors text-base"
                       >
                         +
                       </button>
@@ -100,24 +89,11 @@ export default function CartPage() {
                     {/* 삭제 */}
                     <button
                       onClick={() => removeItem(item.productId, item.size, item.color)}
-                      className="shrink-0 p-1.5 text-gray-300 hover:text-red-400 transition-colors"
-                      aria-label="상품 삭제"
+                      className="text-[var(--border)] hover:text-[var(--muted)] transition-colors shrink-0 pt-1"
+                      aria-label="삭제"
                     >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <polyline points="3 6 5 6 21 6" />
-                        <path d="M19 6l-1 14H6L5 6" />
-                        <path d="M10 11v6M14 11v6" />
-                        <path d="M9 6V4h6v2" />
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                        <path d="M1 1l12 12M13 1L1 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
                       </svg>
                     </button>
                   </li>
@@ -125,43 +101,34 @@ export default function CartPage() {
               })}
             </ul>
 
-            {/* ── 주문 요약 ── */}
-            <div className="rounded-2xl bg-gray-50 p-6">
-              <div className="space-y-2 text-sm mb-4">
-                <div className="flex justify-between text-gray-600">
-                  <span>상품 금액</span>
-                  <span>{totalPrice.toLocaleString('ko-KR')}원</span>
-                </div>
-                <div className="flex justify-between text-gray-600">
-                  <span>배송비</span>
-                  <span>
-                    {deliveryFee === 0 ? (
-                      <span className="text-emerald-600 font-medium">무료</span>
-                    ) : (
-                      `${deliveryFee.toLocaleString('ko-KR')}원`
-                    )}
-                  </span>
-                </div>
-                {deliveryFee > 0 && (
-                  <p className="text-[11px] text-gray-400">
-                    {(FREE_DELIVERY_THRESHOLD - totalPrice).toLocaleString('ko-KR')}원 더 담으면 무료배송
-                  </p>
-                )}
+            {/* 주문 요약 */}
+            <div className="border-t border-[var(--border)] pt-6 space-y-3">
+              <div className="flex justify-between text-sm text-[var(--muted)]">
+                <span>상품 금액</span>
+                <span>{totalPrice.toLocaleString('ko-KR')}원</span>
               </div>
+              <div className="flex justify-between text-sm text-[var(--muted)]">
+                <span>배송비</span>
+                <span>{deliveryFee === 0 ? '무료' : `${deliveryFee.toLocaleString('ko-KR')}원`}</span>
+              </div>
+              {deliveryFee > 0 && (
+                <p className="text-xs text-[var(--muted)]">
+                  {(FREE_DELIVERY_THRESHOLD - totalPrice).toLocaleString('ko-KR')}원 더 담으면 무료배송
+                </p>
+              )}
 
-              <div className="border-t border-gray-200 pt-4 flex justify-between items-center mb-5">
-                <span className="font-bold text-gray-900">총 결제금액</span>
-                <span className="text-xl font-black text-black">
+              <div className="border-t border-[var(--border)] pt-4 flex justify-between items-baseline">
+                <span className="text-sm font-semibold text-[var(--fg)]">총 결제금액</span>
+                <span className="text-xl font-black text-[var(--fg)]">
                   {finalPrice.toLocaleString('ko-KR')}원
                 </span>
               </div>
 
               <Link
                 href="/checkout"
-                className="block w-full py-4 rounded-xl bg-black text-white text-sm font-bold text-center
-                  hover:bg-gray-800 active:scale-[0.98] transition-all duration-150"
+                className="mt-4 block w-full py-3.5 text-center text-xs tracking-widest uppercase border border-[var(--fg)] bg-[var(--fg)] text-[var(--bg)] hover:bg-transparent hover:text-[var(--fg)] transition-all duration-200"
               >
-                주문하기 ({items.length}종)
+                주문하기
               </Link>
             </div>
           </>

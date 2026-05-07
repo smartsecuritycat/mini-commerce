@@ -53,20 +53,20 @@ export default function ProductDetailClient({ product }: Props) {
     <div className="min-h-screen bg-[var(--bg)]">
       <SiteHeader />
 
-      <main className="max-w-6xl mx-auto px-4 sm:px-6 py-8">
+      <main className="max-w-6xl mx-auto px-6 sm:px-8 py-10">
         {/* 뒤로가기 */}
         <Link
           href="/"
-          className="inline-flex items-center gap-1.5 text-sm text-gray-500 hover:text-black transition-colors mb-8"
+          className="inline-flex items-center gap-2 text-xs text-[var(--muted)] hover:text-[var(--fg)] transition-colors mb-10 tracking-wide group"
         >
-          <span className="text-base leading-none">←</span>
-          <span>상품 목록으로</span>
+          <span className="group-hover:-translate-x-0.5 transition-transform inline-block">←</span>
+          <span>키트 목록으로</span>
         </Link>
 
-        {/* 2열 레이아웃: 모바일 1열 / 데스크탑 2열 */}
+        {/* 2열 레이아웃 */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
-          {/* ── 좌: 이미지 ── */}
-          <div className="aspect-square overflow-hidden rounded-3xl bg-gray-50">
+          {/* 이미지 */}
+          <div className="aspect-square overflow-hidden rounded-lg bg-[var(--card)]">
             <ProductImage
               src={product.cloudinaryId}
               alt={product.name}
@@ -78,41 +78,36 @@ export default function ProductDetailClient({ product }: Props) {
             />
           </div>
 
-          {/* ── 우: 상품 정보 ── */}
+          {/* 상품 정보 */}
           <div className="flex flex-col">
-            {/* 카테고리 배지 */}
-            <span className="inline-block self-start px-2.5 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-xs font-medium text-gray-500 dark:text-gray-400 tracking-wider uppercase mb-3">
+            <p className="text-[10px] tracking-[0.25em] uppercase text-[var(--muted)] mb-3">
               {CATEGORY_LABELS[product.category]}
-            </span>
+            </p>
 
-            {/* 상품명 */}
-            <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100 leading-snug mb-2">
+            <h1 className="text-2xl font-black text-[var(--fg)] leading-snug mb-3">
               {product.name}
             </h1>
 
-            {/* 가격 */}
-            <p className="text-2xl font-black text-black dark:text-white mb-4">
+            <p className="text-xl font-semibold text-[var(--fg)] mb-6">
               {product.price.toLocaleString('ko-KR')}원
             </p>
 
-            {/* 구분선 */}
-            <div className="border-t border-gray-100 dark:border-gray-800 mb-5" />
+            <div className="border-t border-[var(--border)] mb-6" />
 
-            {/* 상품 설명 */}
-            <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+            <p className="text-sm text-[var(--muted)] leading-relaxed mb-6">
               {product.description}
             </p>
 
-            {/* 포장 단위 선택 */}
+            {/* 산지 */}
+            <p className="text-xs text-[var(--muted)] mb-6 tracking-wide">
+              산지 — {product.origin}
+            </p>
+
+            {/* 포장 단위 */}
             {product.sizes && product.sizes.length > 0 && (
-              <div className="mb-5">
-                <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">
-                  포장 단위
-                  {selectedSize && (
-                    <span className="ml-2 normal-case text-black dark:text-white font-bold">
-                      — {selectedSize}
-                    </span>
-                  )}
+              <div className="mb-6">
+                <p className="text-[10px] tracking-[0.2em] uppercase text-[var(--muted)] mb-3">
+                  포장 단위{selectedSize && <span className="normal-case ml-2 text-[var(--fg)] font-semibold">— {selectedSize}</span>}
                 </p>
                 <div className="flex gap-2 flex-wrap">
                   {product.sizes.map((size) => (
@@ -120,10 +115,10 @@ export default function ProductDetailClient({ product }: Props) {
                       key={size}
                       onClick={() => setSelectedSize(size)}
                       className={[
-                        'px-4 h-10 rounded-lg text-sm font-semibold border transition-all duration-150',
+                        'px-4 py-2 text-xs border transition-all duration-150',
                         selectedSize === size
-                          ? 'bg-black dark:bg-white text-white dark:text-black border-black dark:border-white'
-                          : 'bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 border-gray-200 dark:border-gray-700 hover:border-gray-400',
+                          ? 'border-[var(--fg)] text-[var(--fg)] bg-[var(--fg)]/5'
+                          : 'border-[var(--border)] text-[var(--muted)] hover:border-[var(--fg)] hover:text-[var(--fg)]',
                       ].join(' ')}
                     >
                       {size}
@@ -133,64 +128,46 @@ export default function ProductDetailClient({ product }: Props) {
               </div>
             )}
 
-            {/* 산지 정보 */}
-            <div className="flex items-center gap-2 mb-6 px-3 py-2.5 bg-green-50 dark:bg-green-950/30 rounded-xl">
-              <span className="text-base">📍</span>
-              <div>
-                <p className="text-xs text-green-700 dark:text-green-400 font-semibold">산지</p>
-                <p className="text-sm text-green-900 dark:text-green-300">{product.origin}</p>
-              </div>
-            </div>
-
-            {/* 수량 선택 */}
-            <div className="mb-6">
-              <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">
-                수량
-              </p>
-              <div className="inline-flex items-center border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden">
+            {/* 수량 */}
+            <div className="mb-8">
+              <p className="text-[10px] tracking-[0.2em] uppercase text-[var(--muted)] mb-3">수량</p>
+              <div className="inline-flex items-center border border-[var(--border)]">
                 <button
                   onClick={decreaseQty}
                   disabled={quantity <= 1}
-                  className="w-10 h-10 flex items-center justify-center text-lg text-gray-600
-                    hover:bg-gray-50 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                  className="w-10 h-9 text-[var(--muted)] hover:text-[var(--fg)] disabled:opacity-30 transition-colors text-lg"
                 >
                   −
                 </button>
-                <span className="w-12 text-center text-sm font-semibold text-gray-900">
-                  {quantity}
-                </span>
+                <span className="w-10 text-center text-sm text-[var(--fg)]">{quantity}</span>
                 <button
                   onClick={increaseQty}
                   disabled={quantity >= product.stock}
-                  className="w-10 h-10 flex items-center justify-center text-lg text-gray-600
-                    hover:bg-gray-50 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                  className="w-10 h-9 text-[var(--muted)] hover:text-[var(--fg)] disabled:opacity-30 transition-colors text-lg"
                 >
                   +
                 </button>
               </div>
             </div>
 
-            {/* 장바구니 담기 버튼 */}
+            {/* 장바구니 담기 */}
             <button
               onClick={handleAddToCart}
               className={[
-                'w-full py-4 rounded-2xl text-sm font-bold transition-all duration-200 mb-3',
+                'w-full py-3.5 text-xs tracking-widest uppercase border transition-all duration-200',
                 added
-                  ? 'bg-emerald-500 text-white scale-[0.98]'
-                  : 'bg-black text-white hover:bg-gray-800 active:scale-[0.98]',
+                  ? 'border-[var(--fg)] text-[var(--fg)] bg-[var(--fg)]/5'
+                  : 'border-[var(--fg)] bg-[var(--fg)] text-[var(--bg)] hover:bg-transparent hover:text-[var(--fg)]',
               ].join(' ')}
             >
-              {added ? '✓ 장바구니에 담겼습니다' : '장바구니 담기'}
+              {added ? '담겼습니다' : '장바구니 담기'}
             </button>
 
-            {/* 재고 */}
-            <p className="text-center text-xs text-gray-400">
-              {product.stock <= 10 ? (
-                <span className="text-red-500 font-medium">남은 재고 {product.stock}개</span>
-              ) : (
-                `재고 ${product.stock}개`
-              )}
-            </p>
+            {product.stock <= 10 && (
+              <p className="mt-3 text-xs text-[var(--muted)] text-center">
+                남은 재고 {product.stock}개
+              </p>
+            )}
           </div>
         </div>
       </main>

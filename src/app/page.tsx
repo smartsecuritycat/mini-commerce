@@ -8,264 +8,177 @@ export default function HomePage() {
       <SiteHeader />
 
       {/* ── 히어로 ── */}
-      <section className="relative overflow-hidden bg-primary">
-        <div
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.2) 1px, transparent 1px)',
-            backgroundSize: '24px 24px',
-          }}
-        />
-        <div className="absolute -right-20 -top-20 w-80 h-80 rounded-full bg-white/5" />
-        <div className="absolute -right-4 top-20 w-44 h-44 rounded-full bg-accent/10" />
-        <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-primary to-transparent" />
+      <section className="bg-primary">
+        <div className="max-w-6xl mx-auto px-6 sm:px-8 pt-20 pb-18 md:pt-28 md:pb-24">
+          <p className="text-white/25 text-[11px] tracking-[0.3em] uppercase mb-14 md:mb-20">
+            충남 논산 — 못난이 농산물 1인분 키트
+          </p>
 
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 py-28 md:py-40 text-center">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-white/10 text-white/70 text-[11px] font-medium tracking-[0.18em] uppercase mb-8">
-            충남 논산 · 못난이 농산물 1인분 키트
-          </span>
-
-          <h1 className="text-5xl sm:text-6xl md:text-[5rem] font-black text-white leading-[1.05] tracking-tight mb-6">
+          <h1 className="text-[clamp(2.8rem,9vw,7rem)] font-black text-white leading-[0.93] tracking-tight">
             못생겼지만
             <br />
             <span className="text-accent">맛은 완벽합니다</span>
           </h1>
 
-          <p className="text-white/55 text-base md:text-lg mb-12 max-w-sm mx-auto leading-[1.8]">
-            버려질 뻔한 논산 농산물을 골라<br />
-            꼭 필요한 1인분만 담았습니다
-          </p>
-
-          <a
-            href="#products"
-            className="inline-flex items-center gap-2.5 bg-accent text-white px-8 py-4 rounded-full font-bold text-sm hover:bg-accent-dark active:scale-[0.97] transition-all duration-150 shadow-xl shadow-accent/20"
-          >
-            키트 둘러보기
-            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24"
-              fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12" />
-              <polyline points="12 5 19 12 12 19" />
-            </svg>
-          </a>
-
-          <div className="mt-16 flex flex-wrap justify-center gap-8 text-white/30 text-xs tracking-wide">
-            {['논산 산지 직송', '재료 + 레시피 카드', '1인분 소분 구성'].map((t) => (
-              <span key={t}>{t}</span>
-            ))}
+          <div className="mt-10 md:mt-14 flex flex-col sm:flex-row sm:items-end gap-8 justify-between">
+            <p className="text-white/40 text-sm leading-[1.9] max-w-[240px]">
+              버려질 뻔한 논산 농산물을 골라<br />
+              꼭 필요한 1인분만 담았습니다
+            </p>
+            <a
+              href="#products"
+              className="group inline-flex items-center gap-2 text-white/50 hover:text-white/90 text-xs tracking-widest uppercase transition-colors"
+            >
+              키트 둘러보기
+              <span className="group-hover:translate-x-1 transition-transform inline-block">→</span>
+            </a>
           </div>
         </div>
       </section>
 
-      {/* ── SDG 12 · 3가지 이유 ── */}
-      <section className="bg-gray-950 dark:bg-black py-20">
-        <FadeInSection>
-          <div className="max-w-6xl mx-auto px-4 sm:px-6">
-            {/* SDG 12 배지 */}
-            <div className="flex justify-center mb-12">
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-accent/40 text-accent text-xs font-semibold tracking-widest uppercase">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
-                  fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/>
-                </svg>
-                UN SDG 12 · 지속가능한 소비와 생산
-              </span>
-            </div>
+      {/* ── 왜 못난이 키트인가요? ── */}
+      <FadeInSection>
+        <section className="py-20 md:py-28 border-b border-[var(--border)]">
+          <div className="max-w-6xl mx-auto px-6 sm:px-8">
+            <div className="grid grid-cols-1 md:grid-cols-[260px_1fr] gap-12 md:gap-20">
 
-            <div className="text-center mb-14">
-              <h2 className="text-3xl md:text-4xl font-black text-white leading-tight mb-4">
-                왜 못난이 키트인가요?
-              </h2>
-              <p className="text-gray-400 text-sm max-w-md mx-auto leading-relaxed">
-                논산에서 매년 수많은 농산물이 외형 문제로 폐기됩니다.<br />
-                세 가지 방식으로 이 문제를 풀어갑니다.
-              </p>
-            </div>
-
-            {/* 3가지 카드 */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {/* 1. SNS 챌린지 */}
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-7 hover:bg-white/8 transition-colors">
-                <div className="w-11 h-11 rounded-xl bg-accent/20 flex items-center justify-center mb-5 text-xl">
-                  📱
-                </div>
-                <p className="text-accent text-xs font-bold tracking-widest uppercase mb-2">
-                  01 · SNS 레시피 챌린지
-                </p>
-                <h3 className="text-white text-lg font-bold mb-3 leading-snug">
-                  요리하고, 찍고, 공유하세요
-                </h3>
-                <p className="text-gray-400 text-sm leading-relaxed">
-                  못난이 농산물로 만든 요리를 SNS에 공유하는 참여형 캠페인.
-                  해시태그를 통해 자연스러운 확산을 유도하고, 지속가능한 소비 문화를 함께 만들어 갑니다.
-                </p>
-                <div className="mt-5 inline-block px-3 py-1.5 bg-accent/15 rounded-lg text-accent text-xs font-bold">
-                  #논산못난이키트
-                </div>
-              </div>
-
-              {/* 2. 1인분 키트 */}
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-7 hover:bg-white/8 transition-colors">
-                <div className="w-11 h-11 rounded-xl bg-green-500/20 flex items-center justify-center mb-5 text-xl">
-                  🥡
-                </div>
-                <p className="text-green-400 text-xs font-bold tracking-widest uppercase mb-2">
-                  02 · 자취생 1인분 키트
-                </p>
-                <h3 className="text-white text-lg font-bold mb-3 leading-snug">
-                  필요한 만큼만 소비합니다
-                </h3>
-                <p className="text-gray-400 text-sm leading-relaxed">
-                  대학생·자취생은 식재료를 대량 구매 후 남겨 버리는 경우가 많습니다.
-                  1인분 단위로 손질 완료된 재료와 레시피 카드를 함께 제공해 식품 낭비를 근본부터 줄입니다.
-                </p>
-                <div className="mt-5 flex gap-2 flex-wrap">
-                  {['손질 완료', '레시피 포함', '딱 1인분'].map(t => (
-                    <span key={t} className="px-2.5 py-1 bg-green-500/15 rounded-lg text-green-400 text-xs font-medium">{t}</span>
-                  ))}
-                </div>
-              </div>
-
-              {/* 3. 친환경 패키징 */}
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-7 hover:bg-white/8 transition-colors">
-                <div className="w-11 h-11 rounded-xl bg-sky-500/20 flex items-center justify-center mb-5 text-xl">
-                  🌿
-                </div>
-                <p className="text-sky-400 text-xs font-bold tracking-widest uppercase mb-2">
-                  03 · 친환경 패키징
-                </p>
-                <h3 className="text-white text-lg font-bold mb-3 leading-snug">
-                  포장도 지구를 생각합니다
-                </h3>
-                <p className="text-gray-400 text-sm leading-relaxed">
-                  키트 운영 과정에서 발생하는 포장 폐기물 문제를 고려해, 플라스틱 대신 친환경 소재를 적용합니다.
-                </p>
-                <ul className="mt-4 space-y-1.5 text-xs text-gray-500">
-                  {[
-                    '생분해성 소재 (옥수수 전분 · 사탕수수)',
-                    '재활용 가능한 종이 · 펄프 패키지',
-                    '대나무 소재 일부 활용',
-                    '최소 포장 원칙 적용',
-                  ].map(item => (
-                    <li key={item} className="flex items-start gap-2">
-                      <span className="text-sky-400 mt-0.5">✓</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-        </FadeInSection>
-      </section>
-
-      {/* ── SNS 챌린지 참여 방법 ── */}
-      <section className="py-20 bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800">
-        <FadeInSection>
-          <div className="max-w-6xl mx-auto px-4 sm:px-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-              {/* 왼쪽: 해시태그 */}
-              <div>
-                <p className="text-accent text-xs font-bold tracking-widest uppercase mb-4">
-                  SNS 레시피 챌린지
-                </p>
-                <h2 className="text-3xl md:text-4xl font-black text-gray-900 dark:text-white leading-tight mb-5">
-                  못난이 키트로 요리하고<br />
-                  <span className="text-accent">#논산못난이키트</span> 로 공유하세요
+              {/* 왼쪽: 레이블 */}
+              <div className="md:pt-1">
+                <p className="text-[10px] tracking-[0.25em] uppercase text-[var(--muted)] mb-3">Why</p>
+                <h2 className="text-2xl font-black text-[var(--fg)] leading-tight">
+                  왜 못난이<br />키트인가요?
                 </h2>
-                <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed mb-8">
-                  키트를 구매하면 레시피 카드가 함께 옵니다. 요리 사진을 찍고 해시태그와 함께 SNS에 올려주세요.
-                  친환경 소비 문화를 함께 만들어가는 캠페인에 참여하실 수 있습니다.
+                <p className="mt-5 text-[11px] text-[var(--muted)] leading-relaxed tracking-wide">
+                  UN SDG 12<br />지속가능한 소비·생산
                 </p>
-                <div className="flex flex-wrap gap-2">
-                  {['#논산못난이키트', '#1인분챌린지', '#못난이농산물', '#SDG12'].map(tag => (
-                    <span key={tag}
-                      className="px-3 py-1.5 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 text-sm rounded-full font-medium">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
               </div>
 
-              {/* 오른쪽: 참여 단계 */}
-              <div className="space-y-4">
+              {/* 오른쪽: 번호 리스트 */}
+              <div>
                 {[
-                  { step: '01', title: '키트 구매', desc: '논산 못난이 농산물로 만든 1인분 키트를 선택하세요.' },
-                  { step: '02', title: '레시피대로 요리', desc: '동봉된 레시피 카드를 보며 간단하게 조리합니다.' },
-                  { step: '03', title: 'SNS에 공유', desc: '완성된 요리를 사진 찍고 해시태그와 함께 올려주세요.' },
-                ].map(({ step, title, desc }) => (
-                  <div key={step} className="flex gap-4 items-start p-4 bg-gray-50 dark:bg-gray-800 rounded-2xl">
-                    <span className="text-accent font-black text-lg shrink-0 w-8">{step}</span>
+                  {
+                    num: '01',
+                    title: 'SNS 레시피 챌린지',
+                    body: '못난이 농산물로 만든 요리를 SNS에 공유하는 참여형 캠페인. 해시태그를 통해 자연스럽게 확산되고, 콘텐츠 생산을 통해 지속가능한 소비 문화를 함께 만들어 갑니다.',
+                    tag: '#논산못난이키트',
+                  },
+                  {
+                    num: '02',
+                    title: '자취생 1인분 키트',
+                    body: '대학생·자취생은 식재료를 대량 구매 후 남겨 버리는 경우가 많습니다. 1인분 단위로 손질 완료된 재료와 레시피 카드를 함께 제공해 식품 낭비를 근본부터 줄입니다.',
+                  },
+                  {
+                    num: '03',
+                    title: '친환경 패키징',
+                    body: '플라스틱으로 포장하면 SDG 12의 목표와 어긋납니다. 모든 포장재에 옥수수 전분·사탕수수 생분해성 소재, 재활용 가능한 종이·펄프, 대나무 소재를 적용합니다. 최소 포장 원칙으로 환경 부담을 줄입니다.',
+                  },
+                ].map(({ num, title, body, tag }, i, arr) => (
+                  <div
+                    key={num}
+                    className={[
+                      'py-8 grid grid-cols-[48px_1fr] gap-5',
+                      i < arr.length - 1 ? 'border-b border-[var(--border)]' : '',
+                    ].join(' ')}
+                  >
+                    <span className="text-[var(--border)] text-3xl font-black leading-none select-none pt-0.5">
+                      {num}
+                    </span>
                     <div>
-                      <p className="font-bold text-gray-900 dark:text-white text-sm mb-0.5">{title}</p>
-                      <p className="text-gray-500 dark:text-gray-400 text-xs leading-relaxed">{desc}</p>
+                      <h3 className="font-semibold text-[var(--fg)] text-base mb-2">{title}</h3>
+                      <p className="text-[var(--muted)] text-sm leading-relaxed">{body}</p>
+                      {tag && (
+                        <span className="mt-3 inline-block text-[11px] text-[var(--muted)] tracking-wide">{tag}</span>
+                      )}
                     </div>
                   </div>
                 ))}
               </div>
+
             </div>
           </div>
-        </FadeInSection>
-      </section>
+        </section>
+      </FadeInSection>
 
-      {/* ── 친환경 패키징 상세 ── */}
-      <section className="py-20 bg-green-50 dark:bg-green-950/20">
-        <FadeInSection>
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 text-center">
-            <p className="text-primary dark:text-green-400 text-xs font-bold tracking-widest uppercase mb-4">
-              친환경 패키징
-            </p>
-            <h2 className="text-3xl md:text-4xl font-black text-gray-900 dark:text-white mb-4">
-              포장재도 SDG 12를 지킵니다
-            </h2>
-            <p className="text-gray-500 dark:text-gray-400 text-sm max-w-lg mx-auto leading-relaxed mb-12">
-              1인분 키트를 플라스틱으로 포장하면 SDG 12의 지속가능한 소비·생산 목표와 어긋납니다.
-              모든 포장재를 친환경 소재로 설계했습니다.
-            </p>
+      {/* ── SNS 챌린지 ── */}
+      <FadeInSection>
+        <section className="py-20 md:py-28 border-b border-[var(--border)]">
+          <div className="max-w-6xl mx-auto px-6 sm:px-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {[
-                { icon: '🌽', title: '생분해성 소재', desc: '옥수수 전분·사탕수수 기반 포장재' },
-                { icon: '♻️', title: '재활용 패키지', desc: '종이·펄프 소재 100% 재활용 가능' },
-                { icon: '🎋', title: '대나무 소재', desc: '재생 가능한 대나무 일부 활용' },
-                { icon: '📦', title: '최소 포장', desc: '불필요한 포장 없이 꼭 필요한 것만' },
-              ].map(({ icon, title, desc }) => (
-                <div key={title} className="bg-white dark:bg-gray-900 rounded-2xl p-5 text-left shadow-sm">
-                  <div className="text-3xl mb-3">{icon}</div>
-                  <p className="font-bold text-gray-900 dark:text-white text-sm mb-1">{title}</p>
-                  <p className="text-gray-500 dark:text-gray-400 text-xs leading-relaxed">{desc}</p>
-                </div>
+              {/* 해시태그 */}
+              <div>
+                <p className="text-[10px] tracking-[0.25em] uppercase text-[var(--muted)] mb-5">SNS 챌린지</p>
+                <p className="text-[clamp(1.6rem,4vw,2.8rem)] font-black text-[var(--fg)] leading-tight">
+                  #논산못난이키트
+                </p>
+                <p className="mt-5 text-[var(--muted)] text-sm leading-relaxed max-w-xs">
+                  키트를 구매하면 레시피 카드가 함께 옵니다.
+                  요리 사진을 찍고 해시태그와 함께 올려주세요.
+                </p>
+              </div>
+
+              {/* 참여 단계 */}
+              <div className="space-y-0 divide-y divide-[var(--border)]">
+                {[
+                  { step: '1', title: '키트 구매', desc: '논산 못난이 농산물로 만든 1인분 키트를 선택합니다.' },
+                  { step: '2', title: '레시피대로 요리', desc: '동봉된 레시피 카드를 보며 간단하게 조리합니다.' },
+                  { step: '3', title: 'SNS에 공유', desc: '완성된 요리를 찍고 해시태그와 함께 올려주세요.' },
+                ].map(({ step, title, desc }) => (
+                  <div key={step} className="py-5 flex items-start gap-5">
+                    <span className="text-xs text-[var(--muted)] shrink-0 pt-0.5 w-4">{step}</span>
+                    <div>
+                      <p className="text-sm font-semibold text-[var(--fg)] mb-0.5">{title}</p>
+                      <p className="text-xs text-[var(--muted)] leading-relaxed">{desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+            </div>
+          </div>
+        </section>
+      </FadeInSection>
+
+      {/* ── 친환경 패키징 ── */}
+      <FadeInSection>
+        <section className="py-12 border-b border-[var(--border)]">
+          <div className="max-w-6xl mx-auto px-6 sm:px-8 flex flex-col sm:flex-row sm:items-center justify-between gap-5">
+            <div>
+              <p className="text-[10px] tracking-[0.25em] uppercase text-[var(--muted)] mb-1">친환경 패키징</p>
+              <p className="text-sm font-semibold text-[var(--fg)]">포장재도 SDG 12를 지킵니다</p>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {['생분해성 소재', '재활용 종이·펄프', '대나무 소재', '최소 포장'].map(t => (
+                <span
+                  key={t}
+                  className="px-3.5 py-1.5 border border-[var(--border)] text-[var(--muted)] text-xs rounded-full"
+                >
+                  {t}
+                </span>
               ))}
             </div>
           </div>
-        </FadeInSection>
-      </section>
+        </section>
+      </FadeInSection>
 
       {/* ── 상품 목록 ── */}
-      <main id="products" className="max-w-6xl mx-auto px-4 sm:px-6 py-16">
+      <main id="products" className="max-w-6xl mx-auto px-6 sm:px-8 py-16">
         <FadeInSection>
-          <div className="mb-8">
-            <h2 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-gray-100">
-              논산 못난이 1인분 키트
-            </h2>
-            <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
-              외형이 좋지 않아 버려질 뻔한 논산 농산물로 만든 1인분 키트. 재료와 레시피 카드가 함께 배송됩니다.
-            </p>
+          <div className="mb-10">
+            <p className="text-[10px] tracking-[0.25em] uppercase text-[var(--muted)] mb-2">Products</p>
+            <h2 className="text-2xl font-black text-[var(--fg)]">논산 못난이 1인분 키트</h2>
           </div>
         </FadeInSection>
 
-        <FadeInSection delay={120}>
+        <FadeInSection delay={80}>
           <ProductGrid />
         </FadeInSection>
       </main>
 
-      <footer className="mt-8 border-t border-gray-100 dark:border-gray-800 py-10">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 text-center space-y-2">
-          <p className="text-xs text-gray-400 dark:text-gray-600">
-            © 2025 논산마켓 — 논산 못난이 농산물 1인분 키트 플랫폼
-          </p>
-          <p className="text-xs text-gray-300 dark:text-gray-700">
-            UN SDG 12 지속가능한 소비·생산 · SDG 13 기후변화 대응
-          </p>
+      <footer className="border-t border-[var(--border)] py-10">
+        <div className="max-w-6xl mx-auto px-6 sm:px-8 flex flex-col sm:flex-row justify-between gap-2 text-[11px] text-[var(--muted)]">
+          <span>© 2025 논산마켓</span>
+          <span>UN SDG 12 지속가능한 소비·생산 · SDG 13 기후변화 대응</span>
         </div>
       </footer>
     </div>

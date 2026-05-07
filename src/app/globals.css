@@ -1,33 +1,30 @@
 @import "tailwindcss";
 
-/* ── 클래스 기반 다크모드 (ThemeToggle이 <html>에 .dark 토글) ── */
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* ── 브랜드 커스텀 색상 ── */
 @theme {
-  --color-primary:      #1f4e1a;   /* 딥 포레스트 그린 — 히어로 배경, 강조 */
-  --color-accent:       #e8762d;   /* 따뜻한 수확 오렌지 — CTA 버튼 */
-  --color-accent-dark:  #c4621e;   /* accent hover */
+  --color-primary:      #1a3e16;
+  --color-accent:       #c4601e;
+  --color-accent-dark:  #a34e18;
 
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-/* ── CSS 변수 (라이트 / 다크) ── */
 :root {
-  --bg:      #ffffff;
-  --fg:      #171717;
-  --muted:   #6b7280;
-  --border:  #f3f4f6;
-  --card:    #ffffff;
+  --bg:     #f5f2ec;
+  --fg:     #1a1a1a;
+  --muted:  #6b6659;
+  --border: #e2ddd6;
+  --card:   #faf8f4;
 }
 
 .dark {
-  --bg:      #0a0a0f;
-  --fg:      #f3f4f6;
-  --muted:   #9ca3af;
-  --border:  #1f2937;
-  --card:    #111827;
+  --bg:     #0c0c0a;
+  --fg:     #f0ede6;
+  --muted:  #9c9488;
+  --border: #252520;
+  --card:   #141410;
 }
 
 body {
@@ -35,3 +32,8 @@ body {
   color: var(--fg);
   transition: background-color 0.2s, color 0.2s;
 }
+
+/* 세련된 스크롤바 */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
