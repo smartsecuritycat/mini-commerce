@@ -23,6 +23,12 @@ type ProductImageProps = {
   category?: Product['category']
 }
 
+// Cloudinary 환경변수 설정 여부 확인
+// 빌드 타임(Vercel)에 env가 없으면 CldImage가 throw → 플레이스홀더로 안전하게 대체
+const CLOUD_NAME = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME ?? ''
+const IS_CLOUDINARY_READY =
+  CLOUD_NAME.length > 0 && !CLOUD_NAME.startsWith('여기에')
+
 export default function ProductImage({
   src,
   alt,
@@ -38,7 +44,8 @@ export default function ProductImage({
     ? CATEGORY_PLACEHOLDER[category]
     : CATEGORY_PLACEHOLDER.default
 
-  if (hasError) {
+  // Cloudinary 미설정 or 이미지 로드 실패 → 플레이스홀더
+  if (!IS_CLOUDINARY_READY || hasError) {
     return (
       <div
         className={`${placeholder.bg} flex flex-col items-center justify-center gap-2 w-full h-full ${className ?? ''}`}
