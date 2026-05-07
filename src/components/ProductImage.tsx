@@ -6,11 +6,11 @@ import { useState } from 'react'
 import type { Product } from '@/data/products'
 
 const CATEGORY_PLACEHOLDER: Record<Product['category'] | 'default', { bg: string; emoji: string }> = {
-  fruit:     { bg: 'bg-red-50',    emoji: '🍎' },
-  vegetable: { bg: 'bg-green-50',  emoji: '🥬' },
-  grain:     { bg: 'bg-amber-50',  emoji: '🌾' },
-  special:   { bg: 'bg-yellow-50', emoji: '⭐' },
-  default:   { bg: 'bg-gray-100',  emoji: '🛒' },
+  cooking: { bg: 'bg-orange-50', emoji: '🍳' },
+  dessert: { bg: 'bg-pink-50',   emoji: '🍓' },
+  drink:   { bg: 'bg-sky-50',    emoji: '🥤' },
+  gift:    { bg: 'bg-rose-50',   emoji: '🎁' },
+  default: { bg: 'bg-gray-100',  emoji: '📦' },
 }
 
 type ProductImageProps = {

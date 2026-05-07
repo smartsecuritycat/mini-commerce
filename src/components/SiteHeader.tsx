@@ -17,8 +17,8 @@ export default function SiteHeader() {
             href="/"
             className="flex items-center gap-1.5 font-black tracking-tight text-black dark:text-white"
           >
-            <span className="text-lg">🌿</span>
-            <span className="text-base">로컬마켓</span>
+            <span className="text-lg">🍓</span>
+            <span className="text-base">논산마켓</span>
           </Link>
 
           {/* 데스크탑 내비게이션 */}

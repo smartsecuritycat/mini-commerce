@@ -161,7 +161,7 @@ function PasswordGate({ onAuth }: { onAuth: () => void }) {
             </svg>
           </div>
           <h1 className="text-lg font-black text-gray-900">관리자 로그인</h1>
-          <p className="text-xs text-gray-400 mt-1">🌿 로컬마켓 어드민</p>
+          <p className="text-xs text-gray-400 mt-1">🍓 논산마켓 어드민</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-3">
@@ -237,7 +237,7 @@ function AdminDashboard() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <Link href="/" className="flex items-center gap-1.5 font-black text-black">
-              <span>🌿</span><span className="text-base">로컬마켓</span>
+              <span>🍓</span><span className="text-base">논산마켓</span>
             </Link>
             <span className="px-2 py-0.5 rounded-full bg-black text-white text-[10px] font-bold uppercase tracking-wider">
               Admin
@@ -347,18 +347,18 @@ function AdminDashboard() {
 
 // ── 상품 참조 데이터 (admin 페이지 전용 — 서버 import 없이 인라인) ──
 const PRODUCT_ROWS = [
-  { id: 'fr-001', name: '완주 딸기',       category: '과일',    cloudinaryId: 'localfood/strawberry-wanju' },
-  { id: 'fr-002', name: '무주 사과',       category: '과일',    cloudinaryId: 'localfood/apple-muju' },
-  { id: 'fr-003', name: '고창 복분자',     category: '과일',    cloudinaryId: 'localfood/blackraspberry-gochang' },
-  { id: 'vg-001', name: '남원 고구마',     category: '채소·버섯', cloudinaryId: 'localfood/sweetpotato-namwon' },
-  { id: 'vg-002', name: '진안 표고버섯',   category: '채소·버섯', cloudinaryId: 'localfood/mushroom-jinan' },
-  { id: 'vg-003', name: '부여 방울토마토', category: '채소·버섯', cloudinaryId: 'localfood/tomato-buyeo' },
-  { id: 'gr-001', name: '담양 쌀',        category: '쌀·장류', cloudinaryId: 'localfood/rice-damyang' },
-  { id: 'gr-002', name: '순창 고추장',     category: '쌀·장류', cloudinaryId: 'localfood/gochujang-sunchang' },
-  { id: 'gr-003', name: '순창 된장',      category: '쌀·장류', cloudinaryId: 'localfood/doenjang-sunchang' },
-  { id: 'sp-001', name: '임실 치즈',      category: '특산물',  cloudinaryId: 'localfood/cheese-imsil' },
-  { id: 'sp-002', name: '부안 오분자기',   category: '특산물',  cloudinaryId: 'localfood/abalone-buan' },
-  { id: 'sp-003', name: '장수 한봉 꿀',   category: '특산물',  cloudinaryId: 'localfood/honey-jangsu' },
+  { id: 'ck-001', name: '논산 딸기 잼 만들기 키트',   category: '요리 키트',   cloudinaryId: 'nonsan/kit-strawberry-jam' },
+  { id: 'ck-002', name: '논산 채소 비빔밥 키트',      category: '요리 키트',   cloudinaryId: 'nonsan/kit-bibimbap' },
+  { id: 'ck-003', name: '논산 딸기 청 담그기 키트',   category: '요리 키트',   cloudinaryId: 'nonsan/kit-strawberry-syrup' },
+  { id: 'ds-001', name: '논산 딸기 케이크 키트',      category: '디저트 키트', cloudinaryId: 'nonsan/kit-strawberry-cake' },
+  { id: 'ds-002', name: '논산 딸기 쿠키 키트',        category: '디저트 키트', cloudinaryId: 'nonsan/kit-strawberry-cookie' },
+  { id: 'ds-003', name: '논산 딸기 아이스크림 키트',  category: '디저트 키트', cloudinaryId: 'nonsan/kit-strawberry-icecream' },
+  { id: 'dr-001', name: '논산 딸기 라떼 키트',        category: '음료 키트',   cloudinaryId: 'nonsan/kit-strawberry-latte' },
+  { id: 'dr-002', name: '논산 연꽃 차 키트',          category: '음료 키트',   cloudinaryId: 'nonsan/kit-lotus-tea' },
+  { id: 'dr-003', name: '논산 딸기 에이드 키트',      category: '음료 키트',   cloudinaryId: 'nonsan/kit-strawberry-ade' },
+  { id: 'gf-001', name: '논산 딸기 프리미엄 선물 키트', category: '선물 세트',  cloudinaryId: 'nonsan/kit-gift-premium' },
+  { id: 'gf-002', name: '논산 패밀리 쿠킹 키트',      category: '선물 세트',   cloudinaryId: 'nonsan/kit-gift-family' },
+  { id: 'gf-003', name: '논산 딸기 체험 ALL-IN 키트', category: '선물 세트',   cloudinaryId: 'nonsan/kit-gift-allin' },
 ]
 
 // ── 메인 페이지 — 인증 분기 ─────────────────────────────

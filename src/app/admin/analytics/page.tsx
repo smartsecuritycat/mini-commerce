@@ -52,7 +52,7 @@ function AdminHeader({ onLogout }: { onLogout: () => void }) {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <Link href="/" className="flex items-center gap-1.5 font-black text-black">
-            <span>🌿</span><span className="text-base">로컬마켓</span>
+            <span>🍓</span><span className="text-base">논산마켓</span>
           </Link>
           <span className="px-2 py-0.5 rounded-full bg-black text-white text-[10px] font-bold uppercase tracking-wider">
             Admin

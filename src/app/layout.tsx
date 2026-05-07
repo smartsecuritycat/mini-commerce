@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "로컬마켓 — 산지 직송 로컬푸드 쇼핑몰",
-  description: "전북·충남 지역 농가에서 직접 수확한 신선한 로컬푸드를 합리적인 가격에 만나보세요.",
+  title: "논산마켓 — 논산 딸기 로컬 키트 쇼핑몰",
+  description: "충남 논산 산지 재료로 만드는 요리·디저트·음료·선물 키트. 레시피 카드와 재료가 함께 배송됩니다.",
 };
 
 // localStorage를 읽어 <html>에 .dark 클래스를 붙이는 인라인 스크립트
