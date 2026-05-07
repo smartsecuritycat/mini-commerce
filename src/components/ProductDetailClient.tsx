@@ -14,7 +14,6 @@ type Props = {
 
 export default function ProductDetailClient({ product }: Props) {
   const [selectedSize, setSelectedSize] = useState<string | null>(null)
-  const [selectedColor, setSelectedColor] = useState<string | null>(null)
   const [quantity, setQuantity] = useState(1)
   const [added, setAdded] = useState(false)
   const addItem = useCartStore((state) => state.addItem)
@@ -26,11 +25,7 @@ export default function ProductDetailClient({ product }: Props) {
 
   const handleAddToCart = () => {
     if (product.sizes && !selectedSize) {
-      alert('사이즈를 선택해주세요.')
-      return
-    }
-    if (product.colors && !selectedColor) {
-      alert('색상을 선택해주세요.')
+      alert('포장 단위를 선택해주세요.')
       return
     }
 
@@ -41,7 +36,6 @@ export default function ProductDetailClient({ product }: Props) {
       cloudinaryId: product.cloudinaryId,
       quantity,
       size: selectedSize ?? undefined,
-      color: selectedColor ?? undefined,
     })
     trackEvent('add_to_cart', {
       productId: product.id,
@@ -109,13 +103,13 @@ export default function ProductDetailClient({ product }: Props) {
               {product.description}
             </p>
 
-            {/* 사이즈 선택 */}
+            {/* 포장 단위 선택 */}
             {product.sizes && product.sizes.length > 0 && (
               <div className="mb-5">
                 <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">
-                  사이즈
+                  포장 단위
                   {selectedSize && (
-                    <span className="ml-2 normal-case text-black font-bold">
+                    <span className="ml-2 normal-case text-black dark:text-white font-bold">
                       — {selectedSize}
                     </span>
                   )}
@@ -126,7 +120,7 @@ export default function ProductDetailClient({ product }: Props) {
                       key={size}
                       onClick={() => setSelectedSize(size)}
                       className={[
-                        'w-12 h-10 rounded-lg text-sm font-semibold border transition-all duration-150',
+                        'px-4 h-10 rounded-lg text-sm font-semibold border transition-all duration-150',
                         selectedSize === size
                           ? 'bg-black dark:bg-white text-white dark:text-black border-black dark:border-white'
                           : 'bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 border-gray-200 dark:border-gray-700 hover:border-gray-400',
@@ -139,35 +133,14 @@ export default function ProductDetailClient({ product }: Props) {
               </div>
             )}
 
-            {/* 색상 선택 */}
-            {product.colors && product.colors.length > 0 && (
-              <div className="mb-6">
-                <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">
-                  색상
-                  {selectedColor && (
-                    <span className="ml-2 normal-case text-black font-bold">
-                      — {selectedColor}
-                    </span>
-                  )}
-                </p>
-                <div className="flex gap-2 flex-wrap">
-                  {product.colors.map((color) => (
-                    <button
-                      key={color}
-                      onClick={() => setSelectedColor(color)}
-                      className={[
-                        'px-3 h-9 rounded-lg text-sm font-medium border transition-all duration-150',
-                        selectedColor === color
-                          ? 'bg-black dark:bg-white text-white dark:text-black border-black dark:border-white'
-                          : 'bg-white dark:bg-gray-900 text-gray-600 dark:text-gray-400 border-gray-200 dark:border-gray-700 hover:border-gray-400',
-                      ].join(' ')}
-                    >
-                      {color}
-                    </button>
-                  ))}
-                </div>
+            {/* 산지 정보 */}
+            <div className="flex items-center gap-2 mb-6 px-3 py-2.5 bg-green-50 dark:bg-green-950/30 rounded-xl">
+              <span className="text-base">📍</span>
+              <div>
+                <p className="text-xs text-green-700 dark:text-green-400 font-semibold">산지</p>
+                <p className="text-sm text-green-900 dark:text-green-300">{product.origin}</p>
               </div>
-            )}
+            </div>
 
             {/* 수량 선택 */}
             <div className="mb-6">

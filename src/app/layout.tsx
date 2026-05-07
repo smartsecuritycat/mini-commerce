@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Mini Commerce — 브랜드 굿즈 쇼핑몰",
-  description: "티셔츠, 후드, 머그컵, 에코백 브랜드 굿즈를 구매하세요.",
+  title: "로컬마켓 — 산지 직송 로컬푸드 쇼핑몰",
+  description: "전북·충남 지역 농가에서 직접 수확한 신선한 로컬푸드를 합리적인 가격에 만나보세요.",
 };
 
 // localStorage를 읽어 <html>에 .dark 클래스를 붙이는 인라인 스크립트

@@ -5,9 +5,9 @@
 
 /* ── 브랜드 커스텀 색상 ── */
 @theme {
-  --color-primary:      #1a1a2e;   /* 딥 네이비 — 히어로 배경, 강조 */
-  --color-accent:       #e94560;   /* 비비드 레드-핑크 — CTA 버튼 */
-  --color-accent-dark:  #c73652;   /* accent hover */
+  --color-primary:      #1f4e1a;   /* 딥 포레스트 그린 — 히어로 배경, 강조 */
+  --color-accent:       #e8762d;   /* 따뜻한 수확 오렌지 — CTA 버튼 */
+  --color-accent-dark:  #c4621e;   /* accent hover */
 
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);

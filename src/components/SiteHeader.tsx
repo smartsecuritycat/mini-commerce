@@ -15,9 +15,10 @@ export default function SiteHeader() {
           {/* 로고 */}
           <Link
             href="/"
-            className="text-base font-black tracking-[0.15em] uppercase text-black dark:text-white"
+            className="flex items-center gap-1.5 font-black tracking-tight text-black dark:text-white"
           >
-            Mini Commerce
+            <span className="text-lg">🌿</span>
+            <span className="text-base">로컬마켓</span>
           </Link>
 
           {/* 데스크탑 내비게이션 */}

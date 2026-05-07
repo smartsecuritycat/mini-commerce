@@ -9,7 +9,7 @@ import { trackEvent } from '@/lib/analytics'
 
 type FilterCategory = 'all' | Product['category']
 
-const FILTER_CATEGORIES: FilterCategory[] = ['all', 'tshirt', 'hoodie', 'mug', 'bag']
+const FILTER_CATEGORIES: FilterCategory[] = ['all', 'fruit', 'vegetable', 'grain', 'special']
 
 export default function ProductGrid() {
   const [active, setActive] = useState<FilterCategory>('all')

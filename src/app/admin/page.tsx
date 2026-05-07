@@ -161,7 +161,7 @@ function PasswordGate({ onAuth }: { onAuth: () => void }) {
             </svg>
           </div>
           <h1 className="text-lg font-black text-gray-900">관리자 로그인</h1>
-          <p className="text-xs text-gray-400 mt-1">Mini Commerce 어드민</p>
+          <p className="text-xs text-gray-400 mt-1">🌿 로컬마켓 어드민</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-3">
@@ -236,8 +236,8 @@ function AdminDashboard() {
       <header className="sticky top-0 z-50 border-b border-gray-100 bg-white/90 backdrop-blur-md">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <Link href="/" className="text-base font-black tracking-[0.15em] uppercase text-black">
-              Mini Commerce
+            <Link href="/" className="flex items-center gap-1.5 font-black text-black">
+              <span>🌿</span><span className="text-base">로컬마켓</span>
             </Link>
             <span className="px-2 py-0.5 rounded-full bg-black text-white text-[10px] font-bold uppercase tracking-wider">
               Admin
@@ -293,7 +293,7 @@ function AdminDashboard() {
             <p>1. 아래 업로드 목록에서 원하는 이미지의 <strong>public_id를 복사</strong>하세요.</p>
             <p>2. <code className="font-mono bg-blue-100 px-1 rounded">src/data/products.ts</code> 파일을 열어</p>
             <p>3. 해당 상품의 <code className="font-mono bg-blue-100 px-1 rounded">cloudinaryId</code> 필드에 붙여넣으세요.</p>
-            <p className="text-blue-500">예시: cloudinaryId: &#39;products/tshirt-basic-logo-abc123&#39;</p>
+            <p className="text-blue-500">예시: cloudinaryId: &#39;localfood/strawberry-wanju-abc123&#39;</p>
           </div>
         </section>
 
@@ -347,18 +347,18 @@ function AdminDashboard() {
 
 // ── 상품 참조 데이터 (admin 페이지 전용 — 서버 import 없이 인라인) ──
 const PRODUCT_ROWS = [
-  { id: 'ts-001', name: '베이직 로고 티셔츠', category: 'tshirt', cloudinaryId: 'products/tshirt-basic-logo' },
-  { id: 'ts-002', name: '스트라이프 오버핏 티셔츠', category: 'tshirt', cloudinaryId: 'products/tshirt-stripe-overfit' },
-  { id: 'ts-003', name: '그래픽 프린트 티셔츠', category: 'tshirt', cloudinaryId: 'products/tshirt-graphic-print' },
-  { id: 'hd-001', name: '클래식 집업 후드', category: 'hoodie', cloudinaryId: 'products/hoodie-classic-zipup' },
-  { id: 'hd-002', name: '오버사이즈 풀오버 후드', category: 'hoodie', cloudinaryId: 'products/hoodie-oversize-pullover' },
-  { id: 'hd-003', name: '크루넥 스웨트셔츠', category: 'hoodie', cloudinaryId: 'products/hoodie-crewneck' },
-  { id: 'mg-001', name: '로고 세라믹 머그', category: 'mug', cloudinaryId: 'products/mug-ceramic-logo' },
-  { id: 'mg-002', name: '미니멀 텀블러', category: 'mug', cloudinaryId: 'products/mug-tumbler' },
-  { id: 'mg-003', name: '더블월 유리 머그', category: 'mug', cloudinaryId: 'products/mug-glass-double' },
-  { id: 'bg-001', name: '캔버스 토트백', category: 'bag', cloudinaryId: 'products/bag-canvas-tote' },
-  { id: 'bg-002', name: '미니 크로스백', category: 'bag', cloudinaryId: 'products/bag-mini-cross' },
-  { id: 'bg-003', name: '지퍼 파우치', category: 'bag', cloudinaryId: 'products/bag-zip-pouch' },
+  { id: 'fr-001', name: '완주 딸기',       category: '과일',    cloudinaryId: 'localfood/strawberry-wanju' },
+  { id: 'fr-002', name: '무주 사과',       category: '과일',    cloudinaryId: 'localfood/apple-muju' },
+  { id: 'fr-003', name: '고창 복분자',     category: '과일',    cloudinaryId: 'localfood/blackraspberry-gochang' },
+  { id: 'vg-001', name: '남원 고구마',     category: '채소·버섯', cloudinaryId: 'localfood/sweetpotato-namwon' },
+  { id: 'vg-002', name: '진안 표고버섯',   category: '채소·버섯', cloudinaryId: 'localfood/mushroom-jinan' },
+  { id: 'vg-003', name: '부여 방울토마토', category: '채소·버섯', cloudinaryId: 'localfood/tomato-buyeo' },
+  { id: 'gr-001', name: '담양 쌀',        category: '쌀·장류', cloudinaryId: 'localfood/rice-damyang' },
+  { id: 'gr-002', name: '순창 고추장',     category: '쌀·장류', cloudinaryId: 'localfood/gochujang-sunchang' },
+  { id: 'gr-003', name: '순창 된장',      category: '쌀·장류', cloudinaryId: 'localfood/doenjang-sunchang' },
+  { id: 'sp-001', name: '임실 치즈',      category: '특산물',  cloudinaryId: 'localfood/cheese-imsil' },
+  { id: 'sp-002', name: '부안 오분자기',   category: '특산물',  cloudinaryId: 'localfood/abalone-buan' },
+  { id: 'sp-003', name: '장수 한봉 꿀',   category: '특산물',  cloudinaryId: 'localfood/honey-jangsu' },
 ]
 
 // ── 메인 페이지 — 인증 분기 ─────────────────────────────

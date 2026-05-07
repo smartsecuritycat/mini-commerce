@@ -67,8 +67,8 @@ function CompleteContent() {
       {/* 헤더 */}
       <header className="border-b border-gray-100 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center">
-          <Link href="/" className="text-base font-black tracking-[0.15em] uppercase text-black">
-            Mini Commerce
+          <Link href="/" className="flex items-center gap-1.5 font-black text-black">
+            <span>🌿</span><span>로컬마켓</span>
           </Link>
         </div>
       </header>

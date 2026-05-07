@@ -51,8 +51,8 @@ function AdminHeader({ onLogout }: { onLogout: () => void }) {
     <header className="sticky top-0 z-50 border-b border-gray-100 bg-white/90 backdrop-blur-md">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <Link href="/" className="text-base font-black tracking-[0.15em] uppercase text-black">
-            Mini Commerce
+          <Link href="/" className="flex items-center gap-1.5 font-black text-black">
+            <span>🌿</span><span className="text-base">로컬마켓</span>
           </Link>
           <span className="px-2 py-0.5 rounded-full bg-black text-white text-[10px] font-bold uppercase tracking-wider">
             Admin
