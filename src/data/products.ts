@@ -10,9 +10,13 @@ export type Product = {
   origin: string
 }
 
-// Unsplash CDN — 반드시 photo-{13자리timestamp-hash} 긴 형식 ID만 사용
+// Unsplash CDN (긴 형식 ID만 사용)
 const u = (id: string) =>
   `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=600&h=600&q=80`
+
+// Pexels CDN (검색으로 확인한 ID)
+const p = (id: number) =>
+  `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop`
 
 export const products: Product[] = [
   // ───── 요리 키트 ─────
@@ -22,7 +26,7 @@ export const products: Product[] = [
     price: 8500,
     category: 'cooking',
     description: '크기가 작거나 껍질에 흠이 생겨 판매되지 못한 논산 양파로 만드는 진한 프렌치 어니언수프. 치즈 크루통 재료까지 한 박스에 담았습니다.',
-    cloudinaryId: u('1583705702-7e8c61a3b7a3'),
+    cloudinaryId: p(209540), // "Soup on White Ceramic Soup Bowl" — Pexels 확인
     sizes: ['1인분', '2인분'],
     stock: 55,
     origin: '충남 논산시',
@@ -79,7 +83,7 @@ export const products: Product[] = [
     price: 10900,
     category: 'dessert',
     description: '흠집으로 폐기되는 논산 사과·배 각 1개씩, 오트밀 크럼블 믹스·시나몬 파우더 포함. 전자레인지 8분이면 완성되는 따뜻한 1인 디저트.',
-    cloudinaryId: u('1551782045-a3f7f2fb4bac'),
+    cloudinaryId: p(2955816), // "Close-up Of Tasty Looking Baked Goods" — Pexels 확인
     sizes: ['1인분'],
     stock: 45,
     origin: '충남 논산시',
@@ -103,7 +107,7 @@ export const products: Product[] = [
     price: 8900,
     category: 'drink',
     description: '색이 고르지 않아 팔리지 못한 논산 토마토 3개, 오이·파프리카·마늘 소분 포함. 여름에 차갑게 마시는 스페인식 채소 냉수프 키트.',
-    cloudinaryId: u('1540189549336-e6c0e43a3f1f'),
+    cloudinaryId: p(3832354), // "White Ceramic Bowl With Red Liquid" — Pexels 확인 (가스파초)
     sizes: ['1인분'],
     stock: 48,
     origin: '충남 논산시',
