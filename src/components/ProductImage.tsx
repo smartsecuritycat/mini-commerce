@@ -1,17 +1,20 @@
 'use client'
 
-// CldImage는 내부적으로 useState를 사용하므로 반드시 'use client' 선언 필요
+import Image from 'next/image'
 import { CldImage } from 'next-cloudinary'
 import { useState } from 'react'
 import type { Product } from '@/data/products'
 
-const CATEGORY_PLACEHOLDER: Record<Product['category'] | 'default', { bg: string; emoji: string }> = {
-  cooking: { bg: 'bg-orange-50', emoji: '🍳' },
-  dessert: { bg: 'bg-pink-50',   emoji: '🍓' },
-  drink:   { bg: 'bg-sky-50',    emoji: '🥤' },
-  gift:    { bg: 'bg-rose-50',   emoji: '🎁' },
-  default: { bg: 'bg-gray-100',  emoji: '📦' },
+const CATEGORY_PLACEHOLDER: Record<Product['category'] | 'default', { bg: string; label: string }> = {
+  cooking: { bg: 'bg-orange-50', label: '요리 키트' },
+  dessert: { bg: 'bg-pink-50',   label: '디저트 키트' },
+  drink:   { bg: 'bg-sky-50',    label: '음료 키트' },
+  gift:    { bg: 'bg-rose-50',   label: '선물 세트' },
+  default: { bg: 'bg-stone-100', label: '준비 중' },
 }
+
+const CLOUD_NAME = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME ?? ''
+const IS_CLOUDINARY_READY = CLOUD_NAME.length > 0 && !CLOUD_NAME.startsWith('여기에')
 
 type ProductImageProps = {
   src: string
@@ -22,12 +25,6 @@ type ProductImageProps = {
   sizes?: string
   category?: Product['category']
 }
-
-// Cloudinary 환경변수 설정 여부 확인
-// 빌드 타임(Vercel)에 env가 없으면 CldImage가 throw → 플레이스홀더로 안전하게 대체
-const CLOUD_NAME = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME ?? ''
-const IS_CLOUDINARY_READY =
-  CLOUD_NAME.length > 0 && !CLOUD_NAME.startsWith('여기에')
 
 export default function ProductImage({
   src,
@@ -44,17 +41,31 @@ export default function ProductImage({
     ? CATEGORY_PLACEHOLDER[category]
     : CATEGORY_PLACEHOLDER.default
 
-  // Cloudinary 미설정 or 이미지 로드 실패 → 플레이스홀더
-  if (!IS_CLOUDINARY_READY || hasError) {
+  const Fallback = () => (
+    <div className={`${placeholder.bg} flex items-center justify-center w-full h-full ${className ?? ''}`}>
+      <span className="text-xs text-stone-400 tracking-wide">{placeholder.label}</span>
+    </div>
+  )
+
+  if (hasError) return <Fallback />
+
+  // https:// 로 시작하면 Next.js Image로 직접 렌더 (Unsplash 등 외부 URL)
+  if (src.startsWith('https://')) {
     return (
-      <div
-        className={`${placeholder.bg} flex flex-col items-center justify-center gap-2 w-full h-full ${className ?? ''}`}
-      >
-        <span className="text-4xl">{placeholder.emoji}</span>
-        <span className="text-xs text-gray-400">이미지 준비 중</span>
-      </div>
+      <Image
+        src={src}
+        alt={alt}
+        width={width}
+        height={height}
+        className={className}
+        sizes={sizes}
+        onError={() => setHasError(true)}
+      />
     )
   }
+
+  // Cloudinary public_id
+  if (!IS_CLOUDINARY_READY) return <Fallback />
 
   return (
     <CldImage
