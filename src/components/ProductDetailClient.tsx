@@ -12,11 +12,24 @@ type Props = {
   product: Product
 }
 
+// 포장 단위별 가격 배수 (2인분 → 2배, 나머지 → 1배)
+const SIZE_MULTIPLIER: Record<string, number> = {
+  '2인분': 2,
+  '2세트': 2,
+  '2인용': 2,
+  '4인용': 4,
+  '8인용': 8,
+}
+
 export default function ProductDetailClient({ product }: Props) {
   const [selectedSize, setSelectedSize] = useState<string | null>(null)
   const [quantity, setQuantity] = useState(1)
   const [added, setAdded] = useState(false)
   const addItem = useCartStore((state) => state.addItem)
+
+  // 선택된 사이즈에 따른 실제 가격
+  const multiplier = SIZE_MULTIPLIER[selectedSize ?? ''] ?? 1
+  const actualPrice = product.price * multiplier
 
   // 마운트 시 view_product 추적 (세션 내 상품별 1회만 집계)
   useEffect(() => {
@@ -32,7 +45,7 @@ export default function ProductDetailClient({ product }: Props) {
     addItem({
       productId: product.id,
       name: product.name,
-      price: product.price,
+      price: actualPrice,       // 사이즈 반영 가격
       cloudinaryId: product.cloudinaryId,
       quantity,
       size: selectedSize ?? undefined,
@@ -40,7 +53,7 @@ export default function ProductDetailClient({ product }: Props) {
     trackEvent('add_to_cart', {
       productId: product.id,
       productName: product.name,
-      price: product.price,
+      price: actualPrice,
     })
     setAdded(true)
     setTimeout(() => setAdded(false), 1500)
@@ -88,9 +101,16 @@ export default function ProductDetailClient({ product }: Props) {
               {product.name}
             </h1>
 
-            <p className="text-xl font-semibold text-[var(--fg)] mb-6">
-              {product.price.toLocaleString('ko-KR')}원
-            </p>
+            <div className="flex items-baseline gap-2 mb-6">
+              <p className="text-xl font-semibold text-[var(--fg)]">
+                {actualPrice.toLocaleString('ko-KR')}원
+              </p>
+              {multiplier > 1 && (
+                <p className="text-xs text-[var(--muted)]">
+                  ({product.price.toLocaleString('ko-KR')}원 × {multiplier})
+                </p>
+              )}
+            </div>
 
             <div className="border-t border-[var(--border)] mb-6" />
 
