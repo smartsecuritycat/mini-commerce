@@ -12,13 +12,20 @@ type Props = {
   product: Product
 }
 
-// 포장 단위별 가격 배수 (2인분 → 2배, 나머지 → 1배)
+// 포장 단위별 가격 배수 (2인분 → 10% 할인 적용)
 const SIZE_MULTIPLIER: Record<string, number> = {
-  '2인분': 2,
-  '2세트': 2,
-  '2인용': 2,
-  '4인용': 4,
-  '8인용': 8,
+  '2인분': 1.8,   // 2배 기준 10% 할인
+  '2세트': 1.8,
+  '2인용': 1.8,
+  '4인용': 3.6,
+  '8인용': 7.2,
+}
+
+// 할인율 표시용
+const SIZE_DISCOUNT_LABEL: Record<string, string> = {
+  '2인분': '10% 할인',
+  '2세트': '10% 할인',
+  '2인용': '10% 할인',
 }
 
 export default function ProductDetailClient({ product }: Props) {
@@ -101,13 +108,20 @@ export default function ProductDetailClient({ product }: Props) {
               {product.name}
             </h1>
 
-            <div className="flex items-baseline gap-2 mb-6">
-              <p className="text-xl font-semibold text-[var(--fg)]">
-                {actualPrice.toLocaleString('ko-KR')}원
-              </p>
-              {multiplier > 1 && (
-                <p className="text-xs text-[var(--muted)]">
-                  ({product.price.toLocaleString('ko-KR')}원 × {multiplier})
+            <div className="mb-6">
+              <div className="flex items-baseline gap-2">
+                <p className="text-xl font-semibold text-[var(--fg)]">
+                  {actualPrice.toLocaleString('ko-KR')}원
+                </p>
+                {selectedSize && SIZE_DISCOUNT_LABEL[selectedSize] && (
+                  <span className="text-xs text-accent font-semibold">
+                    {SIZE_DISCOUNT_LABEL[selectedSize]}
+                  </span>
+                )}
+              </div>
+              {selectedSize && SIZE_DISCOUNT_LABEL[selectedSize] && (
+                <p className="text-xs text-[var(--muted)] mt-0.5 line-through">
+                  {(product.price * (SIZE_MULTIPLIER[selectedSize] / 0.9)).toLocaleString('ko-KR')}원
                 </p>
               )}
             </div>
@@ -135,13 +149,18 @@ export default function ProductDetailClient({ product }: Props) {
                       key={size}
                       onClick={() => setSelectedSize(size)}
                       className={[
-                        'px-4 py-2 text-xs border transition-all duration-150',
+                        'relative px-4 py-2 text-xs border transition-all duration-150',
                         selectedSize === size
                           ? 'border-[var(--fg)] text-[var(--fg)] bg-[var(--fg)]/5'
                           : 'border-[var(--border)] text-[var(--muted)] hover:border-[var(--fg)] hover:text-[var(--fg)]',
                       ].join(' ')}
                     >
                       {size}
+                      {SIZE_DISCOUNT_LABEL[size] && (
+                        <span className="absolute -top-2 -right-2 px-1.5 py-0.5 bg-accent text-white text-[9px] font-bold rounded-full leading-none">
+                          {SIZE_DISCOUNT_LABEL[size]}
+                        </span>
+                      )}
                     </button>
                   ))}
                 </div>
