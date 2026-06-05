@@ -132,10 +132,25 @@ export default function ProductDetailClient({ product }: Props) {
               {product.description}
             </p>
 
-            {/* 산지 */}
-            <p className="text-xs text-[var(--muted)] mb-6 tracking-wide">
-              산지 — {product.origin}
-            </p>
+            {/* 칼로리 · 원산지 */}
+            <div className="grid grid-cols-2 gap-3 mb-6">
+              <div className="border border-[var(--border)] px-4 py-3">
+                <p className="text-[9px] tracking-[0.2em] uppercase text-[var(--muted)] mb-1">
+                  칼로리
+                </p>
+                <p className="text-xs text-[var(--fg)] font-medium leading-snug">
+                  {product.calories}
+                </p>
+              </div>
+              <div className="border border-[var(--border)] px-4 py-3">
+                <p className="text-[9px] tracking-[0.2em] uppercase text-[var(--muted)] mb-1">
+                  원산지
+                </p>
+                <p className="text-xs text-[var(--fg)] font-medium leading-snug">
+                  {product.origin}
+                </p>
+              </div>
+            </div>
 
             {/* 포장 단위 */}
             {product.sizes && product.sizes.length > 0 && (
